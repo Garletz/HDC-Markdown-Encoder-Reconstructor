@@ -35,7 +35,7 @@ more details in architecture_en.md
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/HDC-Markdown-Encoder-Reconstructor.git
+git clone https://github.com/Garletz/HDC-Markdown-Encoder-Reconstructor.git
 
 pip install -r requirements.txt && pip install -e .
 
