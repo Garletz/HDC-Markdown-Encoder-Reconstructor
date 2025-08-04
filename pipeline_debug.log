@@ -1,0 +1,104 @@
+INFO:hdc_markdown_transformer.pipeline:HDCMarkdownTransformer initialized with configuration (modular pipeline)
+INFO:hdc_markdown_transformer.pipeline:HDC Markdown Transformer Configuration
+========================================
+HDC Dimension: 10000
+Random Seed: 42
+Tokenizer: spacy
+Vector Database: memory
+LLM Provider: gemini
+Dictionary Size: 20000
+Batch Size: 100
+Caching: Enabled
+INFO:hdc_markdown_transformer.pipeline:Cache manager initialized
+INFO:hdc_markdown_transformer.pipeline:Preprocessor initialized with spacy tokenizer
+INFO:hdc_markdown_transformer.encoding.item_memory:Initialized ItemMemory with dimension=10000, seed=42
+INFO:hdc_markdown_transformer.pipeline:Initializing HDC dictionary...
+INFO:hdc_markdown_transformer.storage.vector_database:Initialized InMemoryVectorDatabase
+INFO:hdc_markdown_transformer.encoding.item_memory:Loading ItemMemory from cache\item_memory.npz
+INFO:hdc_markdown_transformer.encoding.item_memory:Loaded 20000 word vectors from cache\item_memory.npz
+INFO:hdc_markdown_transformer.encoding.item_memory:[DIAG] Premiers mots du dictionnaire chargé : [np.str_('the'), np.str_('of'), np.str_('and'), np.str_('to'), np.str_('a'), np.str_('in'), np.str_('for'), np.str_('is'), np.str_('on'), np.str_('that')]
+INFO:hdc_markdown_transformer.pipeline:Loaded dictionary from cache: 20000 words
+INFO:hdc_markdown_transformer.encoding.item_memory:Storing 20000 vectors in vector database
+INFO:hdc_markdown_transformer.storage.vector_database:Storing 20000 vectors
+INFO:hdc_markdown_transformer.storage.vector_database:Total vectors stored: 20000
+INFO:hdc_markdown_transformer.storage.vector_database:[DIAG] Premiers identifiants dans vector database : [np.str_('the'), np.str_('of'), np.str_('and'), np.str_('to'), np.str_('a'), np.str_('in'), np.str_('for'), np.str_('is'), np.str_('on'), np.str_('that')]
+INFO:hdc_markdown_transformer.encoding.item_memory:Successfully stored vectors in vector database
+INFO:hdc_markdown_transformer.pipeline:Dictionary stored in vector database (pipeline)
+INFO:hdc_markdown_transformer.pipeline:DEBUG: After pipeline population, self.vector_database contains 20000 vectors
+INFO:hdc_markdown_transformer.encoding.positional_encoder:Generating 10000 position vectors
+INFO:hdc_markdown_transformer.encoding.positional_encoder:Initialized PositionalEncoder with dimension=10000, max_positions=10000, seed=42
+INFO:hdc_markdown_transformer.encoding.hdc_encoder:Initialized HDCEncoder with dimension=10000, positional_encoding=True, threshold=0.0
+INFO:hdc_markdown_transformer.pipeline:HDC encoder initialized
+INFO:hdc_markdown_transformer.storage.vector_database:Initialized InMemoryVectorDatabase
+INFO:hdc_markdown_transformer.pipeline:Vector database initialized: memory
+INFO:hdc_markdown_transformer.pipeline:Similarity search engine initialized
+INFO:hdc_markdown_transformer.reconstruction.llm_client:Initialized Gemini client with model: gemini-pro
+INFO:hdc_markdown_transformer.reconstruction.llm_client:Initialized LLM reconstructor with gemini provider, model: gemini-pro
+INFO:hdc_markdown_transformer.reconstruction.markdown_reconstructor:Initialized MarkdownReconstructor with config: ReconstructionConfig(max_candidates=20, min_confidence_threshold=0.1, include_similarity_scores=False, preserve_structure=True, filter_duplicates=True, rerank_candidates=True, max_retries=2, language='en', document_type='general', target_audience='general')
+INFO:hdc_markdown_transformer.pipeline:Reconstructor initialized with gemini LLM
+INFO:hdc_markdown_transformer.pipeline:Pipeline initialization completed successfully
+INFO:hdc_markdown_transformer.pipeline:Reconstructing markdown from dual HDC hypervectors
+INFO:hdc_markdown_transformer.pipeline:Extracted token count from filename: 12
+INFO:hdc_markdown_transformer.pipeline:Loaded 12 pair vectors from encoded_vectors\encoded_12_pairs.npy
+WARNING:hdc_markdown_transformer.pipeline:Vector database is empty. Recreating and repopulating from ItemMemory...
+INFO:hdc_markdown_transformer.storage.vector_database:Initialized InMemoryVectorDatabase
+INFO:hdc_markdown_transformer.encoding.item_memory:Storing 20000 vectors in vector database
+INFO:hdc_markdown_transformer.storage.vector_database:Storing 20000 vectors
+INFO:hdc_markdown_transformer.storage.vector_database:Total vectors stored: 20000
+INFO:hdc_markdown_transformer.storage.vector_database:[DIAG] Premiers identifiants dans vector database : [np.str_('the'), np.str_('of'), np.str_('and'), np.str_('to'), np.str_('a'), np.str_('in'), np.str_('for'), np.str_('is'), np.str_('on'), np.str_('that')]
+INFO:hdc_markdown_transformer.encoding.item_memory:Successfully stored vectors in vector database
+INFO:hdc_markdown_transformer.pipeline:After repopulation, self.vector_database contains 20000 vectors
+INFO:hdc_markdown_transformer.pipeline:Using search configuration: k=12, threshold=0.0
+INFO:hdc_markdown_transformer.pipeline:Step 1: Searching for words from content vector
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Résultats bruts: 24 candidats (top 10: [np.str_('be'), np.str_('ready'), np.str_('the'), np.str_('vector'), np.str_('i'), np.str_('encoded'), np.str_('into'), np.str_('original'), np.str_('dimensional'), np.str_('to')])
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Score min/max/moyen (brut): 0.0300/0.2304/0.1267
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Après filtrage: 24 candidats (top 10: [np.str_('be'), np.str_('ready'), np.str_('the'), np.str_('vector'), np.str_('i'), np.str_('encoded'), np.str_('into'), np.str_('original'), np.str_('dimensional'), np.str_('to')])
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Score min/max/moyen (filtré): 0.0300/0.2304/0.1267
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Après reranking: 24 candidats (top 10: [np.str_('ready'), np.str_('the'), np.str_('vector'), np.str_('encoded'), np.str_('into'), np.str_('original'), np.str_('dimensional'), np.str_('file'), np.str_('be'), np.str_('i')])
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Score min/max/moyen (rerank): 0.3210/0.4610/0.3803
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Après seuil (threshold=0.0): 12/12 candidats gardés (top 10: [np.str_('ready'), np.str_('the'), np.str_('vector'), np.str_('encoded'), np.str_('into'), np.str_('original'), np.str_('dimensional'), np.str_('file'), np.str_('be'), np.str_('i')])
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Score min/max/moyen (final): 0.3953/0.4610/0.4384
+INFO:hdc_markdown_transformer.pipeline:Found 12 content candidates
+INFO:hdc_markdown_transformer.pipeline:Step 2: Searching for positions from position vector
+INFO:hdc_markdown_transformer.storage.vector_database:Initialized InMemoryVectorDatabase
+INFO:hdc_markdown_transformer.storage.vector_database:Storing 1000 vectors
+INFO:hdc_markdown_transformer.storage.vector_database:Total vectors stored: 1000
+INFO:hdc_markdown_transformer.storage.vector_database:[DIAG] Premiers identifiants dans vector database : ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+INFO:hdc_markdown_transformer.pipeline:Created position database with 1000 position vectors
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Résultats bruts: 24 candidats (top 10: ['0', '4', '3', '2', '11', '10', '6', '7', '12', '1'])
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Score min/max/moyen (brut): 0.0226/0.2484/0.1336
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Après filtrage: 24 candidats (top 10: ['0', '4', '3', '2', '11', '10', '6', '7', '12', '1'])
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Score min/max/moyen (filtré): 0.0226/0.2484/0.1336
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Après reranking: 24 candidats (top 10: ['0', '4', '3', '2', '11', '10', '6', '7', '12', '1'])
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Score min/max/moyen (rerank): 0.2718/0.4239/0.3644
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Après seuil (threshold=0.0): 12/12 candidats gardés (top 10: ['0', '4', '3', '2', '11', '10', '6', '7', '12', '1'])
+INFO:hdc_markdown_transformer.storage.similarity_search:[SIMSEARCH] Score min/max/moyen (final): 0.3985/0.4239/0.4080
+INFO:hdc_markdown_transformer.pipeline:Found 12 position candidates
+INFO:hdc_markdown_transformer.pipeline:Step 3: Using HDC unbinding to recover word-position pairs
+INFO:hdc_markdown_transformer.pipeline:Extracted 12 valid positions from position results
+INFO:hdc_markdown_transformer.pipeline:Top 10 words: [np.str_('ready'), np.str_('the'), np.str_('vector'), np.str_('encoded'), np.str_('into'), np.str_('original'), np.str_('dimensional'), np.str_('file'), np.str_('be'), np.str_('i')]
+INFO:hdc_markdown_transformer.pipeline:Top 10 positions: [0, 4, 3, 2, 11, 10, 6, 7, 12, 1]
+INFO:hdc_markdown_transformer.pipeline:Created 12 ordered candidates
+INFO:hdc_markdown_transformer.pipeline:Recovered 12 word-position pairs
+INFO:hdc_markdown_transformer.pipeline:Step 4: Reconstructing markdown with LLM
+INFO:hdc_markdown_transformer.pipeline:Passing 12 candidates to reconstructor
+INFO:hdc_markdown_transformer.pipeline:Candidate 0: 'i' at position 0 (score: 0.0490)
+INFO:hdc_markdown_transformer.pipeline:Candidate 1: 'am' at position 1 (score: 0.0479)
+INFO:hdc_markdown_transformer.pipeline:Candidate 2: 'the' at position 2 (score: 0.0540)
+INFO:hdc_markdown_transformer.pipeline:Candidate 3: 'original' at position 3 (score: 0.0574)
+INFO:hdc_markdown_transformer.pipeline:Candidate 4: 'file' at position 4 (score: 0.0530)
+INFO:hdc_markdown_transformer.pipeline:Candidate 5: 'ready' at position 5 (score: 0.0000)
+INFO:hdc_markdown_transformer.pipeline:Candidate 6: 'to' at position 6 (score: 0.0454)
+INFO:hdc_markdown_transformer.pipeline:Candidate 7: 'be' at position 7 (score: 0.0475)
+INFO:hdc_markdown_transformer.pipeline:Candidate 8: 'encoded' at position 8 (score: 0.0523)
+INFO:hdc_markdown_transformer.pipeline:Candidate 9: 'into' at position 9 (score: 0.0535)
+INFO:hdc_markdown_transformer.pipeline:Candidate 10: 'dimensional' at position 10 (score: 0.0524)
+INFO:hdc_markdown_transformer.pipeline:Candidate 11: 'vector' at position 11 (score: 0.0549)
+INFO:hdc_markdown_transformer.pipeline:Forced min_confidence_threshold to 0.05 for order deduction results
+INFO:hdc_markdown_transformer.reconstruction.markdown_reconstructor:Entering no-LLM mode: re-filtering candidates with threshold 0.0 to include all HDC results
+WARNING:hdc_markdown_transformer.reconstruction.markdown_reconstructor:Could not parse token count from filename: expected str, bytes or os.PathLike object, not NoneType
+INFO:hdc_markdown_transformer.reconstruction.markdown_reconstructor:No-LLM mode: reconstructing markdown as token list of 20 tokens.
+INFO:hdc_markdown_transformer.reconstruction.markdown_reconstructor:Using 12 candidates (including score 0.0) instead of 7 filtered candidates
+INFO:hdc_markdown_transformer.reconstruction.markdown_reconstructor:Candidates before sorting: [(np.str_('original'), 3), (np.str_('vector'), 11), (np.str_('into'), 9), (np.str_('file'), 4), (np.str_('dimensional'), 10), (np.str_('encoded'), 8), (np.str_('am'), 1), (np.str_('the'), 2), (np.str_('ready'), 5), (np.str_('i'), 0), (np.str_('be'), 7), (np.str_('to'), 6)]
+INFO:hdc_markdown_transformer.reconstruction.markdown_reconstructor:Candidates after sorting: [(np.str_('i'), 0), (np.str_('am'), 1), (np.str_('the'), 2), (np.str_('original'), 3), (np.str_('file'), 4), (np.str_('ready'), 5), (np.str_('to'), 6), (np.str_('be'), 7), (np.str_('encoded'), 8), (np.str_('into'), 9), (np.str_('dimensional'), 10), (np.str_('vector'), 11)]
+INFO:hdc_markdown_transformer.pipeline:Dual vector reconstruction completed

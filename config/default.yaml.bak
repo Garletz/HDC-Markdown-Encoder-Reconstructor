@@ -1,0 +1,56 @@
+# Default configuration for HDC Markdown Transformer
+
+# HDC Configuration
+hdc:
+  dimension: 10000
+  random_seed: 42
+
+# Tokenizer Configuration  
+tokenizer:
+  type: "spacy"  # Options: spacy, nltk, sentencepiece
+  language: "en_core_web_sm"
+  normalize_text: true
+  remove_punctuation: true
+  lowercase: true
+
+# Vector Database Configuration
+vector_database:
+  type: "pinecone"  # Options: pinecone, weaviate, redis
+  index_name: "hdc-markdown-dictionary"
+  dimension: 10000
+  metric: "cosine"
+  
+# LLM Configuration
+llm:
+  provider: "openai"  # Options: openai, local
+  model: "gpt-4-turbo"
+  max_tokens: 2000
+  temperature: 0.3
+  
+# Dictionary Configuration
+dictionary:
+  source: "linguistic"  # Source for word dictionary
+  size: 100000  # Target dictionary size
+  languages: ["en"]
+  
+# Processing Configuration
+processing:
+  batch_size: 100
+  max_document_length: 50000
+  enable_caching: true
+  cache_directory: "./cache"
+  
+# Evaluation Configuration
+evaluation:
+  metrics:
+    - "vector_similarity"
+    - "bleu_score" 
+    - "rouge_score"
+    - "structure_preservation"
+  similarity_threshold: 0.7
+  
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "hdc_transformer.log"

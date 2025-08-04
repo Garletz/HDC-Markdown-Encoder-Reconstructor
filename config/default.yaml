@@ -1,0 +1,71 @@
+# Default configuration for HDC Markdown Transformer
+
+# HDC Configuration
+hdc:
+  dimension: 10000
+  random_seed: 42
+
+# Tokenizer Configuration  
+tokenizer:
+  type: "spacy"  # Options: spacy, nltk, sentencepiece
+  language: "en_core_web_sm"
+  normalize_text: true
+  remove_punctuation: true
+  lowercase: true
+
+# Vector Database Configuration
+vector_database:
+  type: "memory"  # Options: memory, pinecone, weaviate, redis
+  index_name: "hdc-markdown-dictionary"
+  dimension: 10000
+  metric: "cosine"
+  
+# LLM Configuration
+llm:
+  provider: "gemini"  # Options: openai, gemini, local
+  model: "gemini-pro"
+  api_key: ""  # Clé API Gemini
+  # openai_api_key: ""  # Clé API OpenAI (non supporté dans la config YAML)
+  max_tokens: 2000
+  temperature: 0.3
+  
+# Dictionary Configuration
+dictionary:
+  source: "linguistic"  # Source for word dictionary
+  size: 20000  # Taille réelle du vocabulaire anglais
+  languages: ["en"]
+  
+# Processing Configuration
+processing:
+  batch_size: 100
+  max_document_length: 50000
+  enable_caching: true
+  cache_directory: "./cache"
+  
+# Evaluation Configuration
+evaluation:
+  metrics:
+    - "vector_similarity"
+    - "bleu_score" 
+    - "rouge_score"
+    - "structure_preservation"
+  similarity_threshold: 0.7
+  
+# Reconstruction Configuration
+reconstruction:
+  max_candidates: 20
+  min_confidence_threshold: 0.1
+  include_similarity_scores: false
+  preserve_structure: true
+  filter_duplicates: true
+  rerank_candidates: true
+  max_retries: 2
+  language: "en"
+  document_type: "general"
+  target_audience: "general"
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "hdc_transformer.log"

@@ -1,0 +1,16 @@
+llm:
+  provider: gemini
+  model: gemini-pro
+  api_key: "YOUR_GEMINI_API_KEY"
+  temperature: 0.7
+  max_tokens: 512
+
+dictionary:
+  source: file
+  size: 20000
+  languages: [en]
+
+vector_database:
+  type: memory
+
+# Ajoute ici d'autres sections si ton pipeline en requiert (tokenizer, etc)
