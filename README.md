@@ -80,9 +80,7 @@ encoded_vectors/
 ---
 
 - ©**OpenDataHive** 
-
-![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square) (LICENSE MODIFIED) 
-
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE) (LICENSE MODIFIED)
 
 ## Project Goal
 
