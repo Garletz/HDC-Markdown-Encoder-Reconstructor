@@ -35,10 +35,10 @@ more details in architecture_en.md
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/hdc-markdown-transformer.git
-cd hdc-markdown-transformer
+git clone https://github.com/yourusername/HDC-Markdown-Encoder-Reconstructor.git
+
 pip install -r requirements.txt && pip install -e .
-export GOOGLE_API_KEY="your-gemini-api-key"
+
 ```
 
 ## CLI Usage
