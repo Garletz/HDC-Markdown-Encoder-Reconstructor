@@ -4,6 +4,7 @@
 ![Python](https://img.shields.io/badge/Python-3.8%2B-green?style=flat-square)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen?style=flat-square)
+![screen-capture (1) webm](https://github.com/user-attachments/assets/5caef982-d4e2-4419-b729-95b8bdfdd82f)
 
 Transforms Markdown documents into hyperdimensional vectors and reconstructs them using dual HDC encoding and an optional LLM reconstruction.
 
